@@ -8,7 +8,7 @@ jobs:
     env:
       SCAN_PATH: "docker" # Set the relative path in the repo to build the image from
       TAG: "gabe/ubuntu:cicd" # Set the tag to use for the image
-      POLICY: "Gabe Schuyler Docker" # Set the desired Wiz-cli policy to use
+      POLICY: "Asonye Docker" # Set the desired Wiz-cli policy to use
 
     # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
     defaults:
@@ -31,11 +31,11 @@ jobs:
     - name: Authenticate to Wiz
       run: ./wizcli auth --id "$WIZ_CLIENT_ID" --secret "$WIZ_CLIENT_SECRET"
       env:
-        WIZ_ENV: 'test'
+
         WIZ_CLIENT_ID: ${{ secrets.WIZ_CLIENT_ID }}
         WIZ_CLIENT_SECRET: ${{ secrets.WIZ_CLIENT_SECRET }}
 
     - name: Run wiz-cli docker image scan
       run: ./wizcli docker scan --image $TAG --policy "$POLICY"
       env:
-        WIZ_ENV: 'test'
+ 
